@@ -21,8 +21,8 @@ using namespace std;
 // MESSAGE VARIABLE: THE MESSAGE CONTENT TO BE DISPLAYED
 char message[] = "Drink some water now !!";
 //
-// INTERVAL VARIABLE: THE FREQUENCY OF THE NOTIFICATION (IN SECONDS)
-int interval = 3;
+// INTERVAL VARIABLE: THE FREQUENCY OF THE NOTIFICATION (IN MINUTES)
+int interval = 60;
 
 // FUNCTION FOR HANDLING THE TIMER 
 void timer_start(std::function<void(void)> func, unsigned int interval)
@@ -51,9 +51,7 @@ void action()
 // MAIN FUNCTION
 int main(int argc, char * argv[])
 {
-    interval = interval*1000;
+    interval = interval*60*1000;
     timer_start(action, interval);    
     while(true);
 }
-
-

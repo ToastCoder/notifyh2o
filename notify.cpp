@@ -14,8 +14,14 @@
 #include <thread>
 #include <functional>
 
+using namespace std;
+
 // PLACE FOR USER CONFIGURABLE VARIABLES
+// 
+// MESSAGE VARIABLE: THE MESSAGE CONTENT TO BE DISPLAYED
 char message[] = "Drink some water now !!";
+//
+// INTERVAL VARIABLE: THE FREQUENCY OF THE NOTIFICATION (IN SECONDS)
 int interval = 3;
 
 // FUNCTION FOR HANDLING THE TIMER 
@@ -36,17 +42,16 @@ void action()
       notify_init("Message");
       NotifyNotification* n = notify_notification_new("NotifyH2O",message,0);
       notify_notification_set_timeout(n,0);
-
       if(!notify_notification_show(n,0))
       {
-          std:: cerr<<"Show failed"<<std::endl;
+          cerr<<"Show failed"<<endl;
       }
 }
 
+// MAIN FUNCTION
 int main(int argc, char * argv[])
 {
     interval = interval*1000;
-
     timer_start(action, interval);    
     while(true);
 }
